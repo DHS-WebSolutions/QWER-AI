@@ -1,0 +1,92 @@
+---
+interface Props {
+  class?: string;
+  animated?: boolean;
+}
+
+const { class: className = '', animated = false } = Astro.props;
+---
+
+<svg
+  class={`keycap-logo ${animated ? 'is-animated' : ''} ${className}`}
+  viewBox="0 0 400 70"
+  fill="none"
+  xmlns="http://www.w3.org/2000/svg"
+  aria-hidden="true"
+  focusable="false"
+>
+  <!-- Q -->
+  <g class="keycap">
+    <rect class="keycap-shadow" x="0" y="6" width="64" height="64" rx="14" fill="#1F1F1F" />
+    <rect class="keycap-face" x="0" y="0" width="64" height="64" rx="14" fill="#2B2B2B" />
+    <text class="keycap-letter" x="32" y="40" text-anchor="middle" fill="#F2EFE6">Q</text>
+  </g>
+
+  <!-- W -->
+  <g class="keycap" style="animation-delay: 40ms">
+    <rect class="keycap-shadow" x="76" y="6" width="64" height="64" rx="14" fill="#1F1F1F" />
+    <rect class="keycap-face" x="76" y="0" width="64" height="64" rx="14" fill="#2B2B2B" />
+    <text class="keycap-letter" x="108" y="40" text-anchor="middle" fill="#F2EFE6">W</text>
+  </g>
+
+  <!-- E -->
+  <g class="keycap" style="animation-delay: 80ms">
+    <rect class="keycap-shadow" x="152" y="6" width="64" height="64" rx="14" fill="#1F1F1F" />
+    <rect class="keycap-face" x="152" y="0" width="64" height="64" rx="14" fill="#2B2B2B" />
+    <text class="keycap-letter" x="184" y="40" text-anchor="middle" fill="#F2EFE6">E</text>
+  </g>
+
+  <!-- R (accent) -->
+  <g class="keycap" style="animation-delay: 120ms">
+    <rect class="keycap-shadow" x="228" y="6" width="64" height="64" rx="14" fill="#084F3E" />
+    <rect class="keycap-face" x="228" y="0" width="64" height="64" rx="14" fill="#0E7C5F" />
+    <text class="keycap-letter" x="260" y="40" text-anchor="middle" fill="#F2EFE6">R</text>
+  </g>
+
+  <!-- the three dots: "de rest volgt" -->
+  <circle class="dot" cx="322" cy="32" r="7" fill="#5FAE8C" />
+  <circle class="dot" cx="346" cy="32" r="6" fill="#86C9AF" style="animation-delay: 0.25s" />
+  <circle class="dot" cx="368" cy="32" r="5" fill="#B7DFCD" style="animation-delay: 0.5s" />
+</svg>
+
+<style>
+  .keycap-logo {
+    overflow: visible;
+  }
+
+  .keycap-face {
+    transform-box: fill-box;
+    transform-origin: center;
+    transition: transform 0.15s ease;
+  }
+
+  .keycap-logo.is-animated .keycap:hover .keycap-face,
+  .keycap-logo.is-animated .keycap:focus-visible .keycap-face {
+    transform: translateY(4px);
+  }
+
+  .keycap-letter {
+    font-family: var(--font-heading);
+    font-size: 30px;
+    font-weight: 600;
+  }
+
+  .dot {
+    transform-box: fill-box;
+    transform-origin: center;
+  }
+
+  .keycap-logo.is-animated .dot {
+    animation: pulse-dot 2.4s ease-in-out infinite;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .keycap-face {
+      transition: none;
+    }
+
+    .keycap-logo.is-animated .dot {
+      animation: none;
+    }
+  }
+</style>

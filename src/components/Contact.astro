@@ -1,0 +1,91 @@
+---
+import KeycapLogo from './KeycapLogo.astro';
+---
+
+<!--
+  TODO: koppel aan formulier-backend of boekingslink, bv. Formspree / Cal.com.
+  Voor nu valt het formulier terug op een mailto:-link (geen backend).
+-->
+<section id="contact" class="bg-charcoal px-6 py-20 text-cream md:py-28">
+  <div class="mx-auto max-w-2xl">
+    <div class="reveal flex flex-col items-center text-center">
+      <KeycapLogo class="mb-8 h-10 w-auto opacity-90" animated />
+
+      <p class="font-mono text-xs uppercase tracking-[0.25em] text-mint">Aan de slag</p>
+      <h2 class="mt-4 font-heading text-3xl font-semibold leading-tight text-cream sm:text-4xl">
+        Klaar voor de eerste stap?
+      </h2>
+      <p class="mx-auto mt-6 max-w-[55ch] font-body text-base text-cream/75 sm:text-lg">
+        Plan een vrijblijvende kennismaking. Vertel ons waar je tegenaan loopt, en we laten zien
+        waar AI het verschil kan maken.
+      </p>
+    </div>
+
+    <form
+      class="reveal mt-12 space-y-5"
+      action="mailto:%5BTODO:%20e-mailadres%5D"
+      method="post"
+      enctype="text/plain"
+    >
+      <div class="grid gap-5 sm:grid-cols-2">
+        <div>
+          <label for="naam" class="mb-1.5 block font-mono text-xs uppercase tracking-widest text-cream/60">
+            Naam
+          </label>
+          <input
+            type="text"
+            id="naam"
+            name="naam"
+            required
+            class="w-full rounded-lg border border-cream/20 bg-cream/5 px-4 py-3 font-body text-cream placeholder:text-cream/30 focus:border-teal focus:outline-none focus:ring-2 focus:ring-teal/40"
+          />
+        </div>
+        <div>
+          <label for="bedrijf" class="mb-1.5 block font-mono text-xs uppercase tracking-widest text-cream/60">
+            Bedrijf
+          </label>
+          <input
+            type="text"
+            id="bedrijf"
+            name="bedrijf"
+            required
+            class="w-full rounded-lg border border-cream/20 bg-cream/5 px-4 py-3 font-body text-cream placeholder:text-cream/30 focus:border-teal focus:outline-none focus:ring-2 focus:ring-teal/40"
+          />
+        </div>
+      </div>
+
+      <div>
+        <label for="email" class="mb-1.5 block font-mono text-xs uppercase tracking-widest text-cream/60">
+          E-mail
+        </label>
+        <input
+          type="email"
+          id="email"
+          name="email"
+          required
+          class="w-full rounded-lg border border-cream/20 bg-cream/5 px-4 py-3 font-body text-cream placeholder:text-cream/30 focus:border-teal focus:outline-none focus:ring-2 focus:ring-teal/40"
+        />
+      </div>
+
+      <div>
+        <label for="vraag" class="mb-1.5 block font-mono text-xs uppercase tracking-widest text-cream/60">
+          Je grootste AI-vraag
+        </label>
+        <textarea
+          id="vraag"
+          name="vraag"
+          rows="4"
+          required
+          class="w-full rounded-lg border border-cream/20 bg-cream/5 px-4 py-3 font-body text-cream placeholder:text-cream/30 focus:border-teal focus:outline-none focus:ring-2 focus:ring-teal/40"
+        ></textarea>
+      </div>
+
+      <button
+        type="submit"
+        class="keycap-shadow w-full rounded-lg bg-teal px-7 py-3.5 font-body text-sm font-medium text-white transition-colors hover:bg-teal-dark sm:w-auto"
+      >
+        Verstuur
+      </button>
+    </form>
+  </div>
+</section>

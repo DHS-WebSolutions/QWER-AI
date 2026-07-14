@@ -1,0 +1,50 @@
+---
+const founders = [
+  {
+    name: 'Thomas',
+    initial: 'T',
+    bio: '[TODO: korte bio, 1–2 zinnen. Rol, achtergrond (International Business, Groningen), waarom hij dit doet.]',
+  },
+  {
+    name: 'Willem Lenters',
+    initial: 'W',
+    bio: '[TODO: korte bio, 1–2 zinnen. Rol, achtergrond, waarom hij dit doet.]',
+  },
+];
+---
+
+<section id="over-ons" class="bg-paper px-6 py-20 md:py-28">
+  <div class="mx-auto max-w-4xl">
+    <div class="reveal mx-auto max-w-[65ch] text-center">
+      <p class="font-mono text-xs uppercase tracking-[0.25em] text-gray">Over ons</p>
+      <h2 class="mt-4 font-heading text-3xl font-semibold leading-tight text-ink sm:text-4xl">
+        Twee mensen. Eén missie.
+      </h2>
+      <p class="mx-auto mt-6 max-w-[60ch] font-body text-base text-gray sm:text-lg">
+        QWER is opgericht door twee ondernemers die geloven dat AI voor élk bedrijf toegankelijk
+        moet zijn &mdash; niet alleen voor de grote spelers met een IT-afdeling.
+      </p>
+    </div>
+
+    <div class="mt-14 grid gap-8 sm:grid-cols-2">
+      {
+        founders.map((founder, i) => (
+          <div class="reveal flex flex-col items-center gap-4 text-center" style={`transition-delay: ${i * 100}ms`}>
+            <div
+              class="flex h-24 w-24 items-center justify-center rounded-full bg-charcoal font-heading text-3xl font-semibold text-cream"
+              aria-hidden="true"
+            >
+              {founder.initial}
+            </div>
+            <h3 class="font-heading text-xl font-semibold text-ink">{founder.name}</h3>
+            <p class="max-w-[42ch] font-body text-sm italic text-gray/80">{founder.bio}</p>
+          </div>
+        ))
+      }
+    </div>
+    <p class="reveal mt-8 text-center font-mono text-xs italic text-gray/70">
+      [TODO: optionele founder-foto per persoon; laat nette placeholder-avatars tot foto&rsquo;s er
+      zijn.]
+    </p>
+  </div>
+</section>

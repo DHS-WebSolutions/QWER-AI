@@ -1,0 +1,38 @@
+---
+const points = [
+  {
+    title: 'Nederlands mkb als focus',
+    body: 'geen corporate consultancy, wel de praktijk van jouw bedrijf.',
+  },
+  {
+    title: 'Mensen, geen platform',
+    body: 'je praat met ons, niet met een dashboard.',
+  },
+  {
+    title: 'Onafhankelijk',
+    body: 'we kiezen de oplossing die bij jóu past, niet die voor ons het meeste oplevert.',
+  },
+];
+---
+
+<section id="waarom-qwer" class="bg-paper px-6 py-20 md:py-28">
+  <div class="mx-auto max-w-4xl">
+    <div class="reveal mx-auto max-w-[65ch] text-center">
+      <p class="font-mono text-xs uppercase tracking-[0.25em] text-gray">Waarom QWER</p>
+      <h2 class="mt-4 font-heading text-3xl font-semibold leading-tight text-ink sm:text-4xl">
+        We denken mee, niet voor je.
+      </h2>
+    </div>
+
+    <div class="mt-14 grid gap-8 sm:grid-cols-3">
+      {
+        points.map((point, i) => (
+          <div class="reveal" style={`transition-delay: ${i * 100}ms`}>
+            <h3 class="font-heading text-lg font-semibold text-teal">{point.title}</h3>
+            <p class="mt-2 font-body text-base text-gray">{point.body}</p>
+          </div>
+        ))
+      }
+    </div>
+  </div>
+</section>
