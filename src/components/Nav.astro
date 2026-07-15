@@ -5,6 +5,7 @@ const links = [
   { href: '/#aanpak', label: 'Aanpak' },
   { href: '/#wat-we-doen', label: 'Wat we doen' },
   { href: '/#over-ons', label: 'Over ons' },
+  { href: '/pilot', label: 'Eerste 3 klanten' },
 ];
 ---
 
@@ -15,7 +16,7 @@ const links = [
       <span class="font-heading text-lg font-semibold tracking-tight text-ink">QWER</span>
     </a>
 
-    <div class="hidden items-center gap-8 md:flex">
+    <div class="hidden items-center gap-8 lg:flex">
       {
         links.map((link) => (
           <a
@@ -37,7 +38,7 @@ const links = [
     <button
       id="nav-toggle"
       type="button"
-      class="flex flex-col gap-1.5 p-2 md:hidden"
+      class="flex flex-col gap-1.5 p-2 lg:hidden"
       aria-label="Menu openen"
       aria-expanded="false"
       aria-controls="nav-menu"
@@ -51,7 +52,7 @@ const links = [
   <div
     id="nav-menu"
     data-open="false"
-    class="grid grid-rows-[0fr] border-t border-charcoal/10 bg-paper transition-[grid-template-rows] duration-300 ease-out data-[open=true]:grid-rows-[1fr] md:hidden"
+    class="grid grid-rows-[0fr] border-t border-charcoal/10 bg-paper transition-[grid-template-rows] duration-300 ease-out data-[open=true]:grid-rows-[1fr] lg:hidden"
   >
     <div class="flex flex-col gap-1 overflow-hidden px-6">
       {
