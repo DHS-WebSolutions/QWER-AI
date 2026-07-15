@@ -1,0 +1,32 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Nav from '../components/Nav.astro';
+import Footer from '../components/Footer.astro';
+
+const title = 'Aanmelding ontvangen · QWER';
+const description = 'QWER helpt Nederlandse mkb-bedrijven praktisch aan de slag met AI, met trainingsdagen op maat. Geen tools, geen jargon, wel een plan.';
+---
+
+<Layout title={title} description={description}>
+  <Nav />
+  <main>
+    <section class="bg-paper px-6 py-24 md:py-32">
+      <div class="mx-auto flex max-w-2xl flex-col items-center gap-6 text-center">
+        <p class="font-mono text-xs uppercase tracking-[0.25em] text-gray">Bedankt</p>
+        <h1 class="font-heading text-3xl font-semibold leading-tight text-ink sm:text-4xl">
+          Aanmelding ontvangen.
+        </h1>
+        <p class="max-w-[50ch] font-body text-base text-gray sm:text-lg">
+          We nemen binnen twee werkdagen contact op.
+        </p>
+        <a
+          href="/"
+          class="rounded-lg border border-charcoal/20 px-7 py-3.5 font-body text-sm font-medium text-ink transition-colors hover:border-charcoal/40"
+        >
+          Terug naar de homepage
+        </a>
+      </div>
+    </section>
+  </main>
+  <Footer />
+</Layout>

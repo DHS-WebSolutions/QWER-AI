@@ -21,12 +21,17 @@ import KeycapLogo from './KeycapLogo.astro';
     <form
       name="contact"
       method="POST"
-      action="/"
-      netlify
+      action="/bedankt"
+      data-netlify="true"
       netlify-honeypot="bot-field"
       class="reveal mt-12 space-y-5"
     >
-      <input type="hidden" name="bot-field" />
+      <input type="hidden" name="form-name" value="contact" />
+      <p hidden>
+        <label>
+          Niet invullen: <input name="bot-field" />
+        </label>
+      </p>
       <div class="grid gap-5 sm:grid-cols-2">
         <div>
           <label for="naam" class="mb-1.5 block font-mono text-xs uppercase tracking-widest text-cream/60">

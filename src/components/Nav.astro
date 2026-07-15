@@ -2,15 +2,15 @@
 import KeycapLogo from './KeycapLogo.astro';
 
 const links = [
-  { href: '#aanpak', label: 'Aanpak' },
-  { href: '#wat-we-doen', label: 'Wat we doen' },
-  { href: '#over-ons', label: 'Over ons' },
+  { href: '/#aanpak', label: 'Aanpak' },
+  { href: '/#wat-we-doen', label: 'Wat we doen' },
+  { href: '/#over-ons', label: 'Over ons' },
 ];
 ---
 
 <header class="sticky top-0 z-50 border-b border-charcoal/10 bg-paper/90 backdrop-blur">
   <nav class="mx-auto flex max-w-6xl items-center justify-between px-6 py-4" aria-label="Hoofdnavigatie">
-    <a href="#" class="flex items-center gap-3">
+    <a href="/" class="flex items-center gap-3">
       <KeycapLogo class="h-7 w-auto" />
       <span class="font-heading text-lg font-semibold tracking-tight text-ink">QWER</span>
     </a>
@@ -27,7 +27,7 @@ const links = [
         ))
       }
       <a
-        href="#contact"
+        href="/#contact"
         class="keycap-shadow rounded-lg bg-teal px-5 py-2.5 font-body text-sm font-medium text-white transition-colors hover:bg-teal-dark"
       >
         Plan een kennismaking
@@ -65,7 +65,7 @@ const links = [
         ))
       }
       <a
-        href="#contact"
+        href="/#contact"
         class="keycap-shadow my-4 rounded-lg bg-teal px-5 py-3 text-center font-body text-sm font-medium text-white"
       >
         Plan een kennismaking
