@@ -1,14 +1,19 @@
 ---
+import thomasPhoto from '../assets/images/thomas.png';
+import willemPhoto from '../assets/images/willem.png';
+
 const founders = [
   {
     name: 'Thomas',
     initial: 'T',
-    bio: '[TODO: korte bio, 1–2 zinnen. Rol, achtergrond (International Business, Groningen), waarom hij dit doet.]',
+    bio: 'Nieuwsgierig naar AI, gedreven door impact.',
+    photo: thomasPhoto,
   },
   {
-    name: 'Willem Lenters',
+    name: 'Willem',
     initial: 'W',
-    bio: '[TODO: korte bio, 1–2 zinnen. Rol, achtergrond, waarom hij dit doet.]',
+    bio: 'Technologie toegankelijk maken voor ondernemers.',
+    photo: willemPhoto,
   },
 ];
 ---
@@ -30,21 +35,19 @@ const founders = [
       {
         founders.map((founder, i) => (
           <div class="reveal flex flex-col items-center gap-4 text-center" style={`transition-delay: ${i * 100}ms`}>
-            <div
-              class="flex h-24 w-24 items-center justify-center rounded-full bg-charcoal font-heading text-3xl font-semibold text-cream"
-              aria-hidden="true"
-            >
-              {founder.initial}
-            </div>
+            <img
+              src={founder.photo.src}
+              alt={founder.name}
+              class="h-24 w-24 rounded-full object-cover"
+              width="96"
+              height="96"
+              loading="lazy"
+            />
             <h3 class="font-heading text-xl font-semibold text-ink">{founder.name}</h3>
             <p class="max-w-[42ch] font-body text-sm italic text-gray/80">{founder.bio}</p>
           </div>
         ))
       }
     </div>
-    <p class="reveal mt-8 text-center font-mono text-xs italic text-gray/70">
-      [TODO: optionele founder-foto per persoon; laat nette placeholder-avatars tot foto&rsquo;s er
-      zijn.]
-    </p>
   </div>
 </section>
