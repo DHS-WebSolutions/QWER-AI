@@ -1,0 +1,187 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Nav from '../components/Nav.astro';
+import Footer from '../components/Footer.astro';
+import thomasPhoto from '../assets/images/thomas.png';
+import willemPhoto from '../assets/images/willem.png';
+
+const title = 'Over ons · QWER';
+const description =
+  'QWER is opgericht door twee Groningse studenten die in hun bijbanen zagen hoeveel tijd mkb’ers verliezen aan werk dat slimmer kan. Dit is hun verhaal.';
+
+const founders = [
+  {
+    name: 'Thomas',
+    subtitle: 'International Business, Rijksuniversiteit Groningen',
+    photo: thomasPhoto,
+    bio: 'Werkte bij Let’s Get Digital aan apps en technische support op grote events, en deed bij AIESEC B2B-sales en partnerships. Kent dus beide kanten: hoe technologie werkt én hoe je het uitlegt aan iemand die er geen tijd voor heeft. Bij QWER doet hij de trainingen en de klantkant.',
+  },
+  {
+    name: 'Willem',
+    subtitle: 'Bedrijfskunde: Accounting & Finance, Rijksuniversiteit Groningen',
+    photo: willemPhoto,
+    bio: 'Deed via de Student Consultancy Group adviesprojecten bij bedrijven, van acquisitie tot projectmanagement. Zag daar van dichtbij waar mkb’ers hun tijd aan kwijt zijn, en waar de cijfers knellen. Bij QWER bewaakt hij dat elke training zich moet terugverdienen.',
+  },
+];
+
+const beliefs = [
+  {
+    lead: 'AI is geen doel.',
+    rest: 'Tijd overhouden voor echt werk wel.',
+  },
+  {
+    lead: 'Het eerlijkste advies is soms: begin hier nog niet aan.',
+    rest: 'We verdienen niets aan de tools die we bespreken, dus we kunnen dat gewoon zeggen.',
+  },
+  {
+    lead: 'Als wij het niet in gewone taal kunnen uitleggen,',
+    rest: 'snappen we het zelf niet goed genoeg.',
+  },
+  {
+    lead: 'We zijn geslaagd als je ons niet meer nodig hebt.',
+    rest: 'Na een training sta je op eigen benen. Bellen mag altijd.',
+  },
+];
+---
+
+<Layout title={title} description={description}>
+  <Nav />
+  <main>
+    <section class="bg-paper px-6 pb-20 pt-16 md:pb-28 md:pt-24">
+      <div class="mx-auto flex max-w-4xl flex-col items-center gap-6 text-center">
+        <p class="font-mono text-xs uppercase tracking-[0.25em] text-gray">Over ons</p>
+        <h1 class="font-heading text-4xl font-semibold leading-[1.1] tracking-tight text-ink sm:text-5xl md:text-6xl">
+          Twee studenten die het zat waren om te kijken.
+        </h1>
+      </div>
+    </section>
+
+    <section class="bg-charcoal px-6 py-20 text-cream md:py-28">
+      <div class="reveal mx-auto max-w-[65ch]">
+        <p class="font-mono text-xs uppercase tracking-[0.25em] text-mint">Het verhaal</p>
+        <div class="mt-6 space-y-5 font-body text-base text-cream/75 sm:text-lg">
+          <p>
+            We leerden elkaar kennen aan de universiteit in Groningen. Willem studeert
+            Bedrijfskunde met Accounting & Finance, Thomas International Business. Zoals de
+            meeste studenten werkten we naast onze studie, en daar begon het eigenlijk.
+          </p>
+          <p>
+            Thomas werkte bij een eventtech-bedrijf en zag daar hoe technologie werk uit handen
+            kan nemen als je het goed inzet. Willem deed via een studentenadviesbureau projecten
+            bij bedrijven en zag steeds hetzelfde patroon: ondernemers die keihard werken, maar
+            uren kwijt zijn aan taken die slimmer kunnen. Offertes, administratie, mails,
+            planning.
+          </p>
+          <p>
+            Ondertussen las iedereen overal dat AI alles zou veranderen. Maar bij de bedrijven
+            waar wij over de vloer kwamen, veranderde er niks. Niet omdat de wil er niet was,
+            maar omdat niemand de tijd nam om het uit te leggen op een manier die aansluit bij
+            hoe een bedrijf écht werkt. Grote bedrijven huren daar consultants voor in. Het mkb
+            kreeg vooral hype.
+          </p>
+          <p>Dat gat wilden we niet blijven aankijken. Dus zijn we QWER begonnen.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="bg-paper px-6 py-20 md:py-28">
+      <div class="mx-auto max-w-3xl">
+        <div class="reveal keycap-card rounded-2xl bg-teal px-8 py-12 text-center text-white sm:px-14 sm:py-16">
+          <h2 class="font-heading text-3xl font-semibold leading-tight sm:text-4xl">Waarom QWER?</h2>
+          <p class="mx-auto mt-6 max-w-[55ch] font-body text-base text-white/85 sm:text-lg">
+            Kijk naar je toetsenbord. De eerste vier letters: Q, W, E, R. Meer heb je niet nodig
+            om te weten waar de rest zit.
+          </p>
+          <p class="mx-auto mt-4 max-w-[55ch] font-body text-base text-white/85 sm:text-lg">
+            Zo denken wij over AI in het mkb. Je hoeft niet alles te snappen om te beginnen. Je
+            moet weten wáár je begint. De rest volgt.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section class="bg-charcoal px-6 py-20 text-cream md:py-28">
+      <div class="mx-auto max-w-4xl">
+        <div class="reveal mx-auto max-w-[65ch] text-center">
+          <p class="font-mono text-xs uppercase tracking-[0.25em] text-mint">Wie we zijn</p>
+        </div>
+
+        <div class="mt-14 grid gap-10 sm:grid-cols-2">
+          {
+            founders.map((founder, i) => (
+              <div class="reveal flex flex-col items-center gap-3 text-center" style={`transition-delay: ${i * 100}ms`}>
+                <img
+                  src={founder.photo.src}
+                  alt={founder.name}
+                  class="h-24 w-24 rounded-full bg-cream object-contain p-2"
+                  width="96"
+                  height="96"
+                  loading="lazy"
+                />
+                <h3 class="font-heading text-xl font-semibold text-cream">{founder.name}</h3>
+                <p class="font-mono text-xs uppercase tracking-widest text-mint">{founder.subtitle}</p>
+                <p class="max-w-[46ch] font-body text-sm text-cream/75">{founder.bio}</p>
+              </div>
+            ))
+          }
+        </div>
+      </div>
+    </section>
+
+    <section class="bg-paper px-6 py-20 md:py-28">
+      <div class="mx-auto max-w-4xl">
+        <div class="reveal mx-auto max-w-[65ch] text-center">
+          <h2 class="font-heading text-3xl font-semibold leading-tight text-ink sm:text-4xl">
+            Waar we in geloven
+          </h2>
+        </div>
+
+        <div class="mt-14 grid gap-8 sm:grid-cols-2">
+          {
+            beliefs.map((item, i) => (
+              <p class="reveal font-body text-base text-gray sm:text-lg" style={`transition-delay: ${i * 100}ms`}>
+                <span class="font-semibold text-ink">{item.lead}</span> {item.rest}
+              </p>
+            ))
+          }
+        </div>
+      </div>
+    </section>
+
+    <section class="bg-charcoal px-6 py-20 text-cream md:py-28">
+      <div class="reveal mx-auto max-w-[65ch] text-center">
+        <p class="font-mono text-xs uppercase tracking-[0.25em] text-mint">Studenten</p>
+        <h2 class="mt-4 font-heading text-3xl font-semibold leading-tight text-cream sm:text-4xl">
+          En ja: we zijn studenten.
+        </h2>
+        <p class="mx-auto mt-6 max-w-[60ch] font-body text-base text-cream/75 sm:text-lg">
+          Dat zeggen we liever zelf dan dat je het later ontdekt. We zijn opgegroeid met deze
+          technologie en gebruiken haar elke dag. Wat we nog niet hebben aan grijze haren, maken
+          we goed met voorbereiding: elke training bouwen we vanaf nul op rond jouw bedrijf. En je
+          zit nooit met een junior opgescheept die het kunstje van een senior nadoet. Je krijgt
+          ons allebei, elke keer.
+        </p>
+      </div>
+    </section>
+
+    <section class="bg-paper px-6 py-20 md:py-28">
+      <div class="reveal mx-auto flex max-w-2xl flex-col items-center gap-6 text-center">
+        <p class="font-mono text-xs uppercase tracking-[0.25em] text-gray">Over ons</p>
+        <h2 class="font-heading text-3xl font-semibold leading-tight text-ink sm:text-4xl">
+          Benieuwd of het klikt?
+        </h2>
+        <p class="max-w-[55ch] font-body text-base text-gray sm:text-lg">
+          Plan een vrijblijvend gesprek van een uur. Dan weet je meteen of ons verhaal ook in het
+          echt klopt.
+        </p>
+        <a
+          href="/#contact"
+          class="keycap-shadow rounded-lg bg-teal px-7 py-3.5 font-body text-sm font-medium text-white transition-colors hover:bg-teal-dark"
+        >
+          Plan een kennismaking
+        </a>
+      </div>
+    </section>
+  </main>
+  <Footer />
+</Layout>

@@ -1,23 +1,3 @@
----
-import thomasPhoto from '../assets/images/thomas.png';
-import willemPhoto from '../assets/images/willem.png';
-
-const founders = [
-  {
-    name: 'Thomas',
-    initial: 'T',
-    bio: 'Nieuwsgierig naar AI, gedreven door impact.',
-    photo: thomasPhoto,
-  },
-  {
-    name: 'Willem',
-    initial: 'W',
-    bio: 'Technologie toegankelijk maken voor ondernemers.',
-    photo: willemPhoto,
-  },
-];
----
-
 <section id="over-ons" class="bg-paper px-6 py-20 md:py-28">
   <div class="mx-auto max-w-4xl">
     <div class="reveal mx-auto max-w-[65ch] text-center">
@@ -26,30 +6,16 @@ const founders = [
         Twee mensen. Eén missie.
       </h2>
       <p class="mx-auto mt-6 max-w-[60ch] font-body text-base text-gray sm:text-lg">
-        QWER is opgericht door twee ondernemers die zich ergerden aan hetzelfde: iedereen roept
-        dat mkb&rsquo;ers &lsquo;iets met AI moeten&rsquo;, maar niemand steekt de handen uit de
-        mouwen om te laten zien hóe. Grote bedrijven huren consultants in. Wij zijn er voor de
-        rest.
+        QWER is opgericht door twee Groningse studenten die in hun bijbanen zagen hoeveel tijd
+        mkb&rsquo;ers verliezen aan werk dat slimmer kan. Grote bedrijven huren consultants in.
+        Wij zijn er voor de rest.
       </p>
-    </div>
-
-    <div class="mt-14 grid gap-8 sm:grid-cols-2">
-      {
-        founders.map((founder, i) => (
-          <div class="reveal flex flex-col items-center gap-4 text-center" style={`transition-delay: ${i * 100}ms`}>
-            <img
-              src={founder.photo.src}
-              alt={founder.name}
-              class="h-24 w-24 rounded-full bg-cream object-contain p-2"
-              width="96"
-              height="96"
-              loading="lazy"
-            />
-            <h3 class="font-heading text-xl font-semibold text-ink">{founder.name}</h3>
-            <p class="max-w-[42ch] font-body text-sm italic text-gray/80">{founder.bio}</p>
-          </div>
-        ))
-      }
+      <a
+        href="/over-ons"
+        class="mt-8 inline-block rounded-lg border border-charcoal/20 px-7 py-3.5 font-body text-sm font-medium text-ink transition-colors hover:border-charcoal/40"
+      >
+        Lees ons verhaal
+      </a>
     </div>
   </div>
 </section>
