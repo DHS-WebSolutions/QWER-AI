@@ -1,0 +1,242 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Nav from '../components/Nav.astro';
+import Footer from '../components/Footer.astro';
+import DataBar from '../components/DataBar.astro';
+
+const title = 'Waarom nu · QWER';
+const description =
+  'Cijfers van CBS en Van Spaendonck Groep over AI-gebruik in het Nederlandse mkb: de versnelling, de kloof tussen gebruiken en integreren, en waarom kleinere bedrijven achterblijven.';
+
+const sizeData = [
+  { label: '10 tot 19 medewerkers', value: 17.8, displayValue: '17,8%' },
+  { label: '20 tot 49 medewerkers', value: 22.2, displayValue: '22,2%' },
+  { label: '50 tot 99 medewerkers', value: 28.1, displayValue: '28,1%' },
+  { label: '100 tot 249 medewerkers', value: 34.8, displayValue: '34,8%' },
+  { label: '500 of meer medewerkers', value: 59.2, displayValue: '59,2%' },
+];
+
+const sources = [
+  {
+    title: 'CBS, AI-monitor 2024',
+    href: 'https://www.cbs.nl/nl-nl/longread/aanvullende-statistische-diensten/2025/ai-monitor-2024?onepage=true',
+    note: 'Landelijk representatief onderzoek onder Nederlandse bedrijven met 10 of meer medewerkers.',
+  },
+  {
+    title: 'CBS nieuwsbericht: Gebruik kunstmatige intelligentie (AI) door bedrijven neemt toe',
+    href: 'https://www.cbs.nl/nl-nl/nieuws/2025/09/gebruik-kunstmatige-intelligentie--ai---door-bedrijven-neemt-toe',
+    note: 'Samenvatting van dezelfde AI-monitor, CBS, september 2025.',
+  },
+  {
+    title: 'Van Spaendonck Groep, via MKB Servicedesk: Hoe ervaren mkb’ers de implementatie van AI',
+    href: 'https://www.mkbservicedesk.nl/nieuws/ondernemersnieuws/hoe-ervaren-mkbers-de-implementatie-van-ai-onderzoek-wijst-uit-dat-centrale',
+    note: 'Kwalitatief onderzoek onder circa 20 mkb-bedrijven van 10 tot 80 medewerkers.',
+  },
+];
+---
+
+<Layout title={title} description={description}>
+  <Nav />
+  <main>
+    <section class="bg-paper px-6 pb-20 pt-16 md:pb-28 md:pt-24">
+      <div class="mx-auto flex max-w-4xl flex-col items-center gap-6 text-center">
+        <p class="font-mono text-xs uppercase tracking-[0.25em] text-gray">Waarom nu</p>
+        <h1 class="font-heading text-4xl font-semibold leading-[1.1] tracking-tight text-ink sm:text-5xl md:text-6xl">
+          De cijfers over AI in het mkb, zonder poespas.
+        </h1>
+        <p class="max-w-[52ch] text-balance font-body text-base text-gray sm:text-lg">
+          Je hoort overal dat AI belangrijk is. Wat dat voor je eigen bedrijf betekent, is
+          lastiger te wegen. Daarom zetten we hier gewoon de cijfers op een rij: wat er echt
+          gebeurt bij Nederlandse bedrijven, met bron en al. Geen wervende praatjes, alleen wat
+          het onderzoek laat zien.
+        </p>
+      </div>
+    </section>
+
+    <section class="bg-charcoal px-6 py-20 text-cream md:py-28">
+      <div class="mx-auto max-w-3xl">
+        <div class="reveal mx-auto max-w-[65ch]">
+          <p class="font-mono text-xs uppercase tracking-[0.25em] text-mint">De versnelling</p>
+          <h2 class="mt-4 font-heading text-3xl font-semibold leading-tight text-cream sm:text-4xl">
+            Na drie stille jaren, ineens een sprong.
+          </h2>
+          <div class="mt-6 space-y-5 font-body text-base text-cream/75 sm:text-lg">
+            <p>
+              Van 2020 tot 2023 gebeurde er weinig. Bedrijven experimenteerden een beetje, maar
+              breed gebruik bleef uit. In 2024 veranderde dat. Volgens het CBS gebruikte 22,7
+              procent van de Nederlandse bedrijven met 10 of meer medewerkers minstens een vorm
+              van AI. Een jaar eerder was dat nog 14,0 procent.
+            </p>
+            <p>Dat is de grootste stijging in vier jaar, na drie jaar van vrijwel stilstand.</p>
+          </div>
+        </div>
+
+        <div class="reveal mx-auto mt-12 max-w-xl space-y-6">
+          <DataBar label="2023" value={14.0} displayValue="14,0%" delay={0} />
+          <DataBar label="2024" value={22.7} displayValue="22,7%" delay={100} />
+        </div>
+        <p class="reveal mx-auto mt-4 max-w-xl font-body text-xs text-cream/50" style="transition-delay: 200ms">
+          Bedrijven met 10 of meer medewerkers, landelijk cijfer, CBS.
+        </p>
+      </div>
+    </section>
+
+    <section class="bg-paper px-6 py-20 md:py-28">
+      <div class="mx-auto max-w-3xl">
+        <div class="reveal mx-auto max-w-[65ch]">
+          <p class="font-mono text-xs uppercase tracking-[0.25em] text-gray">De kloof</p>
+          <h2 class="mt-4 font-heading text-3xl font-semibold leading-tight text-ink sm:text-4xl">
+            Gebruiken is iets anders dan integreren.
+          </h2>
+          <div class="mt-6 space-y-5 font-body text-base text-gray sm:text-lg">
+            <p>
+              Onderzoek van Van Spaendonck Groep onder Nederlandse mkb’ers laat een genuanceerder
+              beeld zien. Ongeveer een kwart van de ondernemers gebruikt inmiddels AI. Maar van
+              die groep heeft nog geen kwart het echt verankerd in de dagelijkse
+              bedrijfsvoering.
+            </p>
+            <p>De rest probeert het af en toe, of is ergens blijven steken.</p>
+          </div>
+        </div>
+
+        <div class="mt-12 grid gap-8 sm:grid-cols-2">
+          <div class="reveal text-center">
+            <p class="font-heading text-4xl font-semibold text-teal sm:text-5xl">~25%</p>
+            <p class="mt-2 font-body text-base text-gray">van de mkb’ers gebruikt al AI</p>
+          </div>
+          <div class="reveal text-center" style="transition-delay: 100ms">
+            <p class="font-heading text-4xl font-semibold text-teal sm:text-5xl">&lt;25%</p>
+            <p class="mt-2 font-body text-base text-gray">
+              daarvan heeft het écht verankerd in de bedrijfsvoering
+            </p>
+          </div>
+        </div>
+
+        <p class="reveal mx-auto mt-8 max-w-[65ch] font-body text-xs text-gray/80" style="transition-delay: 200ms">
+          Dit komt uit kwalitatief onderzoek van Van Spaendonck Groep onder circa 20
+          mkb-bedrijven van 10 tot 80 medewerkers. Dat is kleinschaliger dan de CBS-cijfers op
+          deze pagina, die landelijk representatief zijn voor een veel grotere groep bedrijven.
+          Beide zeggen iets, maar niet met dezelfde bewijskracht.
+        </p>
+      </div>
+    </section>
+
+    <section class="bg-charcoal px-6 py-20 text-cream md:py-28">
+      <div class="mx-auto max-w-3xl">
+        <div class="reveal mx-auto max-w-[65ch]">
+          <p class="font-mono text-xs uppercase tracking-[0.25em] text-mint">De achterstand</p>
+          <h2 class="mt-4 font-heading text-3xl font-semibold leading-tight text-cream sm:text-4xl">
+            Hoe kleiner het bedrijf, hoe groter de achterstand.
+          </h2>
+          <p class="mt-6 font-body text-base text-cream/75 sm:text-lg">
+            Het CBS splitst het AI-gebruik ook uit naar bedrijfsgrootte. Het patroon is
+            duidelijk: hoe minder medewerkers, hoe kleiner de kans dat een bedrijf AI gebruikt.
+          </p>
+        </div>
+
+        <div class="reveal mx-auto mt-12 max-w-xl space-y-6">
+          {
+            sizeData.map((row, i) => (
+              <DataBar
+                label={row.label}
+                value={row.value}
+                displayValue={row.displayValue}
+                delay={i * 80}
+              />
+            ))
+          }
+        </div>
+
+        <p class="reveal mx-auto mt-10 max-w-[65ch] font-body text-base text-cream/75 sm:text-lg" style="transition-delay: 400ms">
+          Grotere bedrijven hebben vaker een IT-afdeling, budget om te experimenteren en tijd om
+          iets uit te proberen. Kleinere bedrijven hebben dat meestal niet. Precies daar
+          proberen wij te helpen.
+        </p>
+      </div>
+    </section>
+
+    <section class="bg-paper px-6 py-20 md:py-28">
+      <div class="mx-auto max-w-3xl">
+        <div class="reveal mx-auto max-w-[65ch]">
+          <p class="font-mono text-xs uppercase tracking-[0.25em] text-gray">De echte reden</p>
+          <h2 class="mt-4 font-heading text-3xl font-semibold leading-tight text-ink sm:text-4xl">
+            Het is geen kwestie van geld of wantrouwen.
+          </h2>
+          <p class="mt-6 font-body text-base text-gray sm:text-lg">
+            Van de bedrijven die AI hebben overwogen maar het niet gebruiken, noemt 74,6 procent
+            gebrek aan ervaring als belangrijkste reden. Niet de kosten, niet wantrouwen in de
+            technologie. Dat gold voor bedrijven van elke omvang, in elke sector.
+          </p>
+        </div>
+
+        <div class="reveal mx-auto mt-10 max-w-xl">
+          <DataBar
+            label="Noemt gebrek aan ervaring als reden"
+            value={74.6}
+            displayValue="74,6%"
+            theme="light"
+            delay={0}
+          />
+        </div>
+
+        <div class="reveal mx-auto mt-10 max-w-[65ch]" style="transition-delay: 100ms">
+          <p class="font-body text-base text-gray sm:text-lg">
+            Er is nog iets. Van de bedrijven die in 2024 wél AI gebruikten, stopte 28,4 procent
+            daar het jaar erna alweer mee. Geprobeerd, maar niet beklijfd.
+          </p>
+        </div>
+
+        <div class="reveal mx-auto mt-6 max-w-xl" style="transition-delay: 200ms">
+          <DataBar
+            label="Gestopt na een jaar gebruik"
+            value={28.4}
+            displayValue="28,4%"
+            theme="light"
+            accent="mint"
+            delay={200}
+          />
+        </div>
+      </div>
+    </section>
+
+    <section class="bg-charcoal px-6 py-20 text-cream md:py-28">
+      <div class="reveal mx-auto max-w-[65ch] text-center">
+        <p class="font-mono text-xs uppercase tracking-[0.25em] text-mint">Kortom</p>
+        <h2 class="mt-4 font-heading text-3xl font-semibold leading-tight text-cream sm:text-4xl">
+          De rest volgt, maar niet vanzelf.
+        </h2>
+        <p class="mx-auto mt-6 max-w-[60ch] font-body text-base text-cream/75 sm:text-lg">
+          De cijfers laten zien dat de interesse er is, en dat de eerste stap steeds vaker wordt
+          gezet. Wat vaak ontbreekt, is niet motivatie, maar ervaring: iemand die meekijkt bij de
+          eerste keer. Dat is waar wij mee helpen. Geen grote belofte, gewoon een dag waarin je
+          zelf ervaart hoe het werkt.
+          <a href="/#contact" class="text-mint underline hover:text-cream">Plan een vrijblijvend gesprek</a>.
+        </p>
+      </div>
+    </section>
+
+    <section class="bg-paper px-6 py-16 md:py-20">
+      <div class="mx-auto max-w-3xl">
+        <p class="reveal font-mono text-xs uppercase tracking-[0.25em] text-gray">Bronnen</p>
+        <ul class="reveal mt-6 space-y-5">
+          {
+            sources.map((source, i) => (
+              <li class="border-b border-charcoal/10 pb-5 last:border-none last:pb-0" style={`transition-delay: ${i * 80}ms`}>
+                <a
+                  href={source.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="font-body text-sm text-ink underline decoration-charcoal/30 underline-offset-2 hover:text-teal hover:decoration-teal"
+                >
+                  {source.title}
+                </a>
+                <p class="mt-1 font-body text-xs text-gray">{source.note}</p>
+              </li>
+            ))
+          }
+        </ul>
+      </div>
+    </section>
+  </main>
+  <Footer />
+</Layout>

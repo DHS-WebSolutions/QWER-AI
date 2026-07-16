@@ -1,0 +1,30 @@
+---
+interface Props {
+  label: string;
+  value: number;
+  displayValue: string;
+  theme?: 'dark' | 'light';
+  accent?: 'teal' | 'mint';
+  delay?: number;
+}
+
+const { label, value, displayValue, theme = 'dark', accent = 'teal', delay = 0 } = Astro.props;
+const isDark = theme === 'dark';
+---
+
+<div class="reveal" style={`transition-delay: ${delay}ms`}>
+  <div class="flex items-baseline justify-between gap-4">
+    <span class={`font-mono text-xs uppercase tracking-widest ${isDark ? 'text-cream/60' : 'text-gray'}`}>
+      {label}
+    </span>
+    <span class={`font-heading text-lg font-semibold ${isDark ? 'text-cream' : 'text-ink'}`}>
+      {displayValue}
+    </span>
+  </div>
+  <div class={`mt-2 h-3 w-full overflow-hidden rounded-full ${isDark ? 'bg-cream/10' : 'bg-charcoal/10'}`}>
+    <div
+      class={`h-full rounded-full ${accent === 'mint' ? 'bg-mint' : 'bg-teal'}`}
+      style={`width: ${value}%`}
+    ></div>
+  </div>
+</div>
