@@ -1,0 +1,190 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Nav from '../components/Nav.astro';
+import Footer from '../components/Footer.astro';
+
+const title = 'Programma · QWER';
+const description =
+  'Het volledige programma van de QWER-trainingsdag: zes modules, de tijdsduur per module en het complete dagschema inclusief pauzes.';
+
+const stats = [
+  { value: '6 uur', label: 'inhoud' },
+  { value: '1 uur', label: 'pauze' },
+  { value: '7 uur', label: 'op locatie' },
+];
+
+const modules = [
+  {
+    number: '01',
+    title: 'Instapmodule',
+    duration: '90 minuten',
+    body: 'Je leert hoe een taalmodel denkt, en waarom sturen beter werkt dan commanderen. Je oefent met voorbeelden geven, AI in stappen laten denken en output in de vorm krijgen die je nodig hebt. Je sluit af met je eigen taak: een offertemail, linkedin-post of klantvraag, geprompt tijdens de sessie.',
+  },
+  {
+    number: '02',
+    title: 'Veilig, verantwoord en kritisch',
+    duration: '45 minuten',
+    body: 'Wat deel je wel en niet met een AI-tool, en waarom. Je leert hallucinaties herkennen voordat ze een klant bereiken, en wanneer AI juist niet de oplossing is. Geen technisch verhaal, maar concrete grenzen voor dagelijks gebruik.',
+  },
+  {
+    number: '03',
+    title: 'Personeel en organisatie',
+    duration: '45 minuten',
+    body: 'Je gaat aan de slag met vacatureteksten, planning en het voorbereiden van gesprekken. Je neemt een taak mee die deze week nog op je bureau ligt, en werkt die uit tijdens de sessie.',
+  },
+  {
+    number: '04',
+    title: 'Administratie, offerte en financiën',
+    duration: '90 minuten',
+    body: 'Offertes en mails die blijven liggen, en een boekhouding die overzicht mist: allebei tijdrovend, allebei goed te versnellen met AI. Je werkt met je eigen offerte of factuur, en bouwt een vaste werkwijze die je maandag meteen gebruikt.',
+  },
+  {
+    number: '05',
+    title: 'Sales en klantencontact',
+    duration: '60 minuten',
+    body: 'Klantvragen sneller beantwoorden zonder dat het onpersoonlijk wordt. Je oefent met opvolging, veelgestelde vragen en communicatie die nog steeds klinkt als jij.',
+  },
+  {
+    number: '06',
+    title: 'Vervolgtraject',
+    duration: '30 minuten',
+    body: 'Geen nieuwe stof, maar een gezamenlijke blik vooruit: wat neem je mee, waar loop je nog tegenaan, en welk vervolg past bij jullie bedrijf. Dit onderdeel staat nog niet vast. We ontwikkelen het samen met de eerste pilotklanten.',
+  },
+];
+
+const schedule = [
+  { type: 'module', time: '09:00 - 10:30', label: 'Module 1: Instapmodule', minutes: 90 },
+  { type: 'pauze', time: '10:30 - 10:45', label: 'Korte pauze', minutes: 15 },
+  { type: 'module', time: '10:45 - 11:30', label: 'Module 2: Veilig, verantwoord en kritisch', minutes: 45 },
+  { type: 'module', time: '11:30 - 12:15', label: 'Module 3: Personeel en organisatie', minutes: 45 },
+  { type: 'pauze', time: '12:15 - 12:45', label: 'Lunch', minutes: 30 },
+  { type: 'module', time: '12:45 - 14:15', label: 'Module 4: Administratie, offerte en financiën', minutes: 90 },
+  { type: 'pauze', time: '14:15 - 14:30', label: 'Korte pauze', minutes: 15 },
+  { type: 'module', time: '14:30 - 15:30', label: 'Module 5: Sales en klantencontact', minutes: 60 },
+  { type: 'module', time: '15:30 - 16:00', label: 'Module 6: Vervolgtraject', minutes: 30 },
+];
+
+const paddingByMinutes = {
+  90: 'py-6',
+  60: 'py-5',
+  45: 'py-4',
+  30: 'py-3',
+  15: 'py-2',
+};
+---
+
+<Layout title={title} description={description}>
+  <Nav />
+  <main>
+    <section class="bg-paper px-6 pb-20 pt-16 md:pb-28 md:pt-24">
+      <div class="mx-auto flex max-w-4xl flex-col items-center gap-6 text-center">
+        <p class="font-mono text-xs uppercase tracking-[0.25em] text-gray">Programma</p>
+        <h1 class="font-heading text-4xl font-semibold leading-[1.1] tracking-tight text-ink sm:text-5xl md:text-6xl">
+          Eén dag, zes modules, geen powerpoint-marathon.
+        </h1>
+        <p class="max-w-[52ch] text-balance font-body text-base text-gray sm:text-lg">
+          De trainingsdag duurt zes uur, verdeeld over zes modules, plus een uur pauze. Je werkt
+          de hele dag met je eigen praktijkvoorbeelden, niet met dia’s over AI in het algemeen.
+          Hieronder zie je precies wat er in elke module gebeurt, en hoe de dag in elkaar zit.
+        </p>
+
+        <div class="mt-6 grid grid-cols-3 gap-6 sm:gap-10">
+          {
+            stats.map((stat, i) => (
+              <div class="reveal text-center" style={`transition-delay: ${i * 100}ms`}>
+                <p class="font-heading text-3xl font-semibold text-teal sm:text-4xl">{stat.value}</p>
+                <p class="mt-1 font-mono text-xs uppercase tracking-widest text-gray">{stat.label}</p>
+              </div>
+            ))
+          }
+        </div>
+      </div>
+    </section>
+
+    <section class="bg-charcoal px-6 py-20 text-cream md:py-28">
+      <div class="mx-auto max-w-4xl">
+        <div class="reveal mx-auto max-w-[65ch] text-center">
+          <p class="font-mono text-xs uppercase tracking-[0.25em] text-mint">De modules</p>
+          <h2 class="mt-4 font-heading text-3xl font-semibold leading-tight text-cream sm:text-4xl">
+            Zes modules, allemaal met je eigen werk.
+          </h2>
+        </div>
+
+        <ol class="mt-14 space-y-10 md:space-y-14">
+          {
+            modules.map((module, i) => (
+              <li
+                class="reveal flex flex-col gap-2 border-b border-cream/10 pb-10 last:border-none last:pb-0 md:flex-row md:items-baseline md:gap-8"
+                style={`transition-delay: ${i * 80}ms`}
+              >
+                <span class="font-mono text-2xl font-semibold text-mint md:w-16 md:shrink-0">
+                  {module.number}
+                </span>
+                <div>
+                  <div class="flex flex-wrap items-baseline gap-3">
+                    <h3 class="font-heading text-xl font-semibold text-cream">{module.title}</h3>
+                    <span class="font-mono text-xs uppercase tracking-widest text-cream/50">
+                      {module.duration}
+                    </span>
+                  </div>
+                  <p class="mt-2 max-w-[60ch] font-body text-base text-cream/75">{module.body}</p>
+                </div>
+              </li>
+            ))
+          }
+        </ol>
+      </div>
+    </section>
+
+    <section class="bg-paper px-6 py-20 md:py-28">
+      <div class="mx-auto max-w-3xl">
+        <div class="reveal mx-auto max-w-[65ch] text-center">
+          <p class="font-mono text-xs uppercase tracking-[0.25em] text-gray">Dagschema</p>
+          <h2 class="mt-4 font-heading text-3xl font-semibold leading-tight text-ink sm:text-4xl">
+            Zo ziet de dag eruit.
+          </h2>
+        </div>
+
+        <ol class="reveal mt-12 divide-y divide-charcoal/10 border-y border-charcoal/10">
+          {
+            schedule.map((item) => (
+              <li class={`flex items-center gap-4 sm:gap-6 ${paddingByMinutes[item.minutes]}`}>
+                <span class="w-28 shrink-0 whitespace-nowrap font-mono text-xs text-gray sm:w-32 sm:text-sm">
+                  {item.time}
+                </span>
+                <span
+                  class={
+                    item.type === 'module'
+                      ? 'font-body text-sm font-medium text-ink sm:text-base'
+                      : 'font-body text-sm italic text-gray/70'
+                  }
+                >
+                  {item.label}
+                </span>
+              </li>
+            ))
+          }
+        </ol>
+      </div>
+    </section>
+
+    <section class="bg-paper px-6 py-14 md:py-16">
+      <div class="reveal mx-auto flex max-w-2xl flex-col items-center gap-4 text-center">
+        <h2 class="font-heading text-2xl font-semibold leading-tight text-ink">
+          Dit is de opzet zoals hij nu staat.
+        </h2>
+        <p class="max-w-[50ch] font-body text-base text-gray">
+          We geven onze eerste drie trainingsdagen weg zonder factuur, in ruil voor eerlijke
+          feedback. Drie plekken, vanaf september.
+        </p>
+        <a
+          href="/pilot"
+          class="rounded-lg border border-charcoal/20 px-7 py-3.5 font-body text-sm font-medium text-ink transition-colors hover:border-charcoal/40"
+        >
+          Bekijk het aanbod
+        </a>
+      </div>
+    </section>
+  </main>
+  <Footer />
+</Layout>
