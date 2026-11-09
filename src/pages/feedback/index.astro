@@ -1,0 +1,266 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Nav from '../../components/Nav.astro';
+import Footer from '../../components/Footer.astro';
+
+// Hidden page: reached via a QR code at the end of a training, never linked from the site.
+// Use /feedback?training=<slug> (e.g. ?training=aiesec-groningen) to tag submissions.
+
+// All copy lives here so the page can be translated in one place.
+const copy = {
+  lang: 'en',
+  title: 'Training feedback · QWER',
+  description: 'Share your feedback on the QWER AI training.',
+  eyebrow: 'Feedback · AI training',
+  headingLine1: 'Thanks for joining.',
+  headingLine2: 'How did we do?',
+  intro:
+    'Four questions, about two minutes. We use your answers to improve our trainings and may quote them anonymously on our website.',
+  rating: {
+    number: '01',
+    legend: 'How would you rate the training overall?',
+    low: 'Poor',
+    high: 'Excellent',
+    error: 'Please pick a rating from 1 to 5.',
+  },
+  questions: [
+    {
+      number: '02',
+      name: 'change',
+      label: "What's one thing you'll do differently after today?",
+      helper: "Be specific. For example: a task you'll now do with AI.",
+      required: true,
+    },
+    {
+      number: '03',
+      name: 'recommendation',
+      label: 'Would you recommend this training to others? Why?',
+      helper: 'A sentence or two is perfect.',
+      required: true,
+    },
+    {
+      number: '04',
+      name: 'improvement',
+      label: 'What could we improve?',
+      helper: '',
+      required: false,
+    },
+  ],
+  optional: '(optional)',
+  requiredError: 'Please answer this question.',
+  honeypot: "Don't fill this in:",
+  submit: 'Send feedback',
+  sending: 'Sending…',
+};
+
+const ratingOptions = [1, 2, 3, 4, 5];
+const maxLength = 600;
+---
+
+<Layout title={copy.title} description={copy.description} lang={copy.lang} noindex>
+  <Nav />
+  <main>
+    <section class="bg-paper px-6 pb-20 pt-12 md:pb-28 md:pt-20">
+      <div class="mx-auto max-w-xl">
+        <div class="flex flex-col items-center gap-6 text-center">
+          <p class="font-mono text-xs uppercase tracking-[0.25em] text-gray">{copy.eyebrow}</p>
+          <h1 class="font-heading text-4xl font-semibold leading-[1.1] tracking-tight text-ink sm:text-5xl">
+            {copy.headingLine1}<br />
+            <span class="text-teal">{copy.headingLine2}</span>
+          </h1>
+          <p class="max-w-[42ch] text-balance font-body text-base text-gray sm:text-lg">{copy.intro}</p>
+        </div>
+
+        <form
+          id="feedback-form"
+          name="training-feedback"
+          method="POST"
+          action="/feedback/bedankt"
+          data-netlify="true"
+          netlify-honeypot="bot-field"
+          class="mt-12 space-y-6 sm:space-y-8"
+        >
+          <input type="hidden" name="form-name" value="training-feedback" />
+          <input type="hidden" id="training" name="training" value="unknown" />
+          <p hidden>
+            <label>
+              {copy.honeypot} <input name="bot-field" />
+            </label>
+          </p>
+
+          <div class="question rounded-2xl border border-charcoal/10 bg-cream p-5 sm:p-8">
+            <fieldset class="min-w-0">
+              <legend class="font-heading text-lg font-semibold leading-snug text-ink sm:text-xl">
+                <span class="mb-2 block font-mono text-lg font-semibold text-teal" aria-hidden="true">
+                  {copy.rating.number}
+                </span>
+                {copy.rating.legend}
+              </legend>
+
+              <div class="mt-6 max-w-sm">
+                <div class="grid grid-cols-5 gap-2 sm:gap-3">
+                  {
+                    ratingOptions.map((value) => (
+                      <label class="relative block">
+                        <input
+                          type="radio"
+                          name="rating"
+                          value={value}
+                          required
+                          class="rating-input absolute inset-0 z-10 h-full w-full cursor-pointer appearance-none opacity-0"
+                        />
+                        <span class="key font-heading">
+                          {value}
+                          {value === 1 && <span class="sr-only">, {copy.rating.low}</span>}
+                          {value === 5 && <span class="sr-only">, {copy.rating.high}</span>}
+                        </span>
+                      </label>
+                    ))
+                  }
+                </div>
+                <div
+                  class="mt-3 flex justify-between font-mono text-xs uppercase tracking-widest text-gray"
+                  aria-hidden="true"
+                >
+                  <span>{copy.rating.low}</span>
+                  <span>{copy.rating.high}</span>
+                </div>
+              </div>
+
+              <p class="field-error mt-4 font-body text-sm font-medium text-red-700">{copy.rating.error}</p>
+            </fieldset>
+          </div>
+
+          {
+            copy.questions.map((question) => (
+              <div class="question rounded-2xl border border-charcoal/10 bg-cream p-5 sm:p-8">
+                <label
+                  for={question.name}
+                  class="block font-heading text-lg font-semibold leading-snug text-ink sm:text-xl"
+                >
+                  <span class="mb-2 block font-mono text-lg font-semibold text-teal" aria-hidden="true">
+                    {question.number}
+                  </span>
+                  {question.label}
+                  {!question.required && (
+                    <span class="font-body text-base font-normal text-gray"> {copy.optional}</span>
+                  )}
+                </label>
+                {question.helper && (
+                  <p id={`${question.name}-helper`} class="mt-2 font-body text-sm text-gray">
+                    {question.helper}
+                  </p>
+                )}
+                <textarea
+                  id={question.name}
+                  name={question.name}
+                  rows="4"
+                  maxlength={maxLength}
+                  required={question.required}
+                  aria-describedby={question.helper ? `${question.name}-helper` : undefined}
+                  class="mt-4 block w-full resize-y rounded-lg border border-charcoal/20 bg-paper px-4 py-3 font-body text-base text-ink focus:border-teal focus:outline-none focus:ring-2 focus:ring-teal/40 user-invalid:border-red-700"
+                />
+                {question.required && (
+                  <p class="field-error mt-2 font-body text-sm font-medium text-red-700">{copy.requiredError}</p>
+                )}
+              </div>
+            ))
+          }
+
+          <button
+            type="submit"
+            data-sending-label={copy.sending}
+            class="keycap-shadow w-full rounded-lg bg-teal px-7 py-3.5 font-body text-sm font-medium text-white transition-colors hover:bg-teal-dark disabled:cursor-not-allowed disabled:opacity-70 sm:w-auto"
+          >
+            {copy.submit}
+          </button>
+        </form>
+      </div>
+    </section>
+  </main>
+  <Footer />
+</Layout>
+
+<style>
+  /* Rating keys: same keycap as the logo, dark face on a darker bottom edge. */
+  .key {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    aspect-ratio: 1;
+    margin-bottom: 5px;
+    border-radius: 0.875rem;
+    background-color: var(--color-charcoal);
+    color: var(--color-cream);
+    font-size: 1.375rem;
+    font-weight: 600;
+    box-shadow: 0 5px 0 0 var(--color-ink);
+    transition:
+      transform 0.12s ease,
+      box-shadow 0.12s ease,
+      background-color 0.12s ease;
+  }
+
+  @media (hover: hover) {
+    .rating-input:hover + .key {
+      transform: translateY(2px);
+      box-shadow: 0 3px 0 0 var(--color-ink);
+    }
+  }
+
+  .rating-input:checked + .key {
+    background-color: var(--color-teal);
+    transform: translateY(4px);
+    box-shadow: 0 1px 0 0 var(--color-teal-dark);
+  }
+
+  .rating-input:focus-visible + .key {
+    outline: 2px solid var(--color-teal);
+    outline-offset: 3px;
+  }
+
+  /* Errors only show after the visitor tried to submit or left a field empty. */
+  .field-error {
+    display: none;
+  }
+
+  .question:has(:user-invalid) .field-error {
+    display: block;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .key {
+      transition: none;
+    }
+  }
+</style>
+
+<script>
+  const form = document.querySelector<HTMLFormElement>('#feedback-form');
+  const trainingInput = document.querySelector<HTMLInputElement>('#training');
+
+  const training = new URLSearchParams(window.location.search).get('training')?.trim();
+  if (trainingInput && training) {
+    trainingInput.value = training.slice(0, 100);
+  }
+
+  if (form) {
+    const button = form.querySelector<HTMLButtonElement>('button[type="submit"]');
+    const label = button?.textContent?.trim() ?? '';
+
+    // `submit` only fires once native validation has passed.
+    form.addEventListener('submit', () => {
+      if (!button) return;
+      button.disabled = true;
+      button.textContent = button.dataset.sendingLabel ?? label;
+    });
+
+    // Re-enable when the page is restored from the back/forward cache.
+    window.addEventListener('pageshow', (event) => {
+      if (event.persisted && button) {
+        button.disabled = false;
+        button.textContent = label;
+      }
+    });
+  }
+</script>
