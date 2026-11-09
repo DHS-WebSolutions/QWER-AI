@@ -4,7 +4,7 @@ import tailwindcss from '@tailwindcss/vite';
 
 // https://astro.build/config
 export default defineConfig({
-  site: 'https://qwer.nl',
+  site: 'https://qwer-ai.nl',
   // The dev toolbar's built-in performance audit does its own background
   // `fetch` of page images to inspect them, which throws in some headless
   // testing setups. It's a dev-only debugging overlay (never shipped in
